@@ -13,6 +13,7 @@ class loginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 180),
               Text(
                 '스포팅과 함께\n건강한 나를 만들어보세요!',
                 textAlign: TextAlign.center,
@@ -40,6 +41,7 @@ class loginPage extends StatelessWidget {
                   minimumSize: Size(315, 48),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
+
                   ),
                   textStyle: TextStyle(fontSize: 10),
                 ),
@@ -112,6 +114,7 @@ class loginPage extends StatelessWidget {
                 child: Text(
                   '회원가입 팝업창 확인해보기',
                   style: TextStyle(fontSize: 15, color: Colors.white),
+
                 ),
               ),
 
@@ -130,6 +133,7 @@ class loginPage extends StatelessWidget {
                   minimumSize: Size(315, 48),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
+                    side: BorderSide(color: Colors.black, width: 1), // 검은색 테두리 추가
                   ),
                   textStyle: TextStyle(fontSize: 20),
                 ),
@@ -146,6 +150,7 @@ class loginPage extends StatelessWidget {
                   minimumSize: Size(315, 48),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
+                    side: BorderSide(color: Colors.black, width: 2), // 검은색 테두리 추가
                   ),
                   textStyle: TextStyle(fontSize: 20),
                 ),
@@ -154,7 +159,7 @@ class loginPage extends StatelessWidget {
                   style: TextStyle(fontSize: 15, color: Colors.white),
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               Text(
                 '고객문의',
                 style: TextStyle(

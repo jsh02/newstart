@@ -3,6 +3,7 @@ import '31page.dart';
 import '32page.dart';
 import '33page.dart';
 import '34page.dart';
+import '35page.dart';
 
 
 
@@ -29,10 +30,10 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          SizedBox(height: 50),  // 화면의 끝과 페이지 간의 간격 조절
+          SizedBox(height: 100),  // 화면의 끝과 페이지 간의 간격 조절
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(4, (index) => buildDot(index: index)),
+            children: List.generate(5, (index) => buildDot(index: index)),
           ),
           Expanded(
             child: PageView(
@@ -47,6 +48,7 @@ class _HomeState extends State<Home> {
                 Page32(),
                 Page33(),
                 Page34(),
+                Page35(),
               ],
             ),
           ),
@@ -58,9 +60,9 @@ class _HomeState extends State<Home> {
 
   Widget buildDot({required int index}) {
     return Container(
-      height: 7,   // 점크기 조절
-      width: 7,    // 점크기 조절
-      margin: EdgeInsets.symmetric(horizontal: 5),  // 점과 점 사이 길이조절
+      height: 6,   // 점크기 조절
+      width: 6,    // 점크기 조절
+      margin: EdgeInsets.symmetric(horizontal: 3),  // 점과 점 사이 길이조절
       decoration: BoxDecoration(
         color: _currentPage == index ? Colors.black : Colors.grey,  // 활성점과 비활성점 색깔조절
         shape: BoxShape.circle,  // 점의 모양 조절

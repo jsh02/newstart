@@ -51,11 +51,8 @@ class _MainPageState extends State<MainPage> {
               'lib/image/logo.png', // 이미지 경로 확인 필요
               width: 200,
             ),
-            SizedBox(height: 60),
-            Text(
-              '앱 로딩 중...',
-              style: TextStyle(fontSize: 20, color: Colors.black),
-            ),
+            SizedBox(height: 60)
+
           ],
         ),
       ),

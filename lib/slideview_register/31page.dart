@@ -11,7 +11,7 @@ class Page31 extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 80),
+              SizedBox(height: 40),
               Text(
                 '한눈에 보기 쉬운',
 
@@ -31,7 +31,7 @@ class Page31 extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 125),
+              SizedBox(height: 80),
               Image.asset(
                 'lib/image/map32.png',
                 width: 200,
