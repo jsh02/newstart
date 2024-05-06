@@ -36,7 +36,9 @@ class Page35 extends StatelessWidget {
                 width: 200,
               ),
               SizedBox(height: 20),// Static map image
+
             ],
+
           ),
         )
     );

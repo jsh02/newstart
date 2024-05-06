@@ -3,18 +3,29 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class google_map extends StatelessWidget {
-  static final LatLng companyLatLng = LatLng(  // ➊ 지도 초기화 위치
+  static final LatLng EdormLatLng = LatLng(  // ➊ 지도 초기화 위치
+    37.3331,  // 위도
+    127.2616,  // 경도
+    // 한국외대 E동 남자 기숙사 위치 마킹
+  );
+  static final LatLng backLatLng = LatLng(  // ➊ 지도 초기화 위치
     37.3331,  // 위도
     127.2616,  // 경도
     // 한국외대 남자 기숙사 위치 마킹
   );
+  static final LatLng engineeringLatLng = LatLng(  // ➊ 지도 초기화 위치
+    37.3331,  // 위도
+    127.2616,  // 경도
+    // 한국외대 남자 기숙사 위치 마킹
+  );
+
   static final Marker marker = Marker(
     markerId: MarkerId('company'),
-    position: companyLatLng,
+    position: EdormLatLng,
   );
   static final Circle circle = Circle(
     circleId: CircleId('choolCheckCircle'),
-    center: companyLatLng, // 원의 중심이 되는 위치. LatLng값을 제공합니다.
+    center: EdormLatLng, // 원의 중심이 되는 위치. LatLng값을 제공합니다.
     fillColor: Colors.blue.withOpacity(0.5), // 원의 색상
     radius: 100, // 원의 반지름 (미터 단위)
     strokeColor: Colors.blue, // 원의 테두리 색
@@ -46,7 +57,7 @@ class google_map extends StatelessWidget {
                     flex: 2,
                     child: GoogleMap(
                       initialCameraPosition: CameraPosition(
-                        target: companyLatLng,
+                        target: EdormLatLng,
                         zoom: 16,
                       ),
                       myLocationEnabled: true,
@@ -58,56 +69,50 @@ class google_map extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(  // 시계 아이콘
-                          Icons.timelapse_outlined,
-                          color: Colors.blue,
-                          size: 50.0,
-                        ),
-                        const SizedBox(height: 20.0),
-                        ElevatedButton(  // [json 형식으로 데이터 보내기] 버튼
+                        ElevatedButton(
                           onPressed: () async {
-                            final curPosition = await Geolocator.getCurrentPosition();  // 현재 위치
+                            // 현재 위치를 가져오는 Geolocator 메서드
+                            final Position currentPosition = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
-                            final distance = Geolocator.distanceBetween(
-                              curPosition.latitude,  // 현재위치 위도
-                              curPosition.longitude,  // 현재위치 경도
-                              companyLatLng.latitude,  // 회사위치 위도
-                              companyLatLng.longitude,  // 회사위치 경도
-                            );
-                            bool canCheck =
-                                distance < 100; // 100미터 이내에 있으면 출근 가능
-
+                            // AlertDialog를 통해 현재 위치의 위도와 경도 표시
                             showDialog(
                               context: context,
-                              builder: (_) {
+                              builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text('위치 정보 받아오기 프로젝트'),
-                                  // 출근 가능 여부에 따라 다른 메시지 제공
-                                  content: Text(
-                                    canCheck ? '출근을 하시겠습니까?' : '출근할수 없는 위치입니다.',
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      // 취소를 누르면 false 반환
-                                      onPressed: () {
-                                        Navigator.of(context).pop(false);
-                                      },
-                                      child: Text('취소'),
+                                  title: Text('현재 위치'),
+                                  content: SingleChildScrollView(
+                                    child: ListBody(
+                                      children: <Widget>[
+                                        Text('위도: ${currentPosition.latitude}'),
+                                        Text('경도: ${currentPosition.longitude}'),
+                                      ],
                                     ),
-                                    if (canCheck) // 출근 가능한 상태일 때만 [출근하기] 버튼 제공
-                                      TextButton(
-                                        // 출근하기를 누르면 true 반환
-                                        onPressed: () {
-                                          Navigator.of(context).pop(true);
-                                        },
-                                        child: Text('출근하기'),
-                                      ),
+                                  ),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: Text('확인'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();  // 다이얼로그 닫기
+                                      },
+                                    ),
                                   ],
                                 );
                               },
                             );
                           },
-                          child: Text('정보 보내기'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black,  // 버튼 배경 색상
+                            minimumSize: Size(315, 48),  // 버튼 크기
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),  // 둥근 모서리
+                              side: BorderSide(color: Colors.black, width: 2),  // 검은색 테두리 추가
+                            ),
+                            textStyle: TextStyle(fontSize: 20),  // 텍스트 스타일 설정
+                          ),
+                          child: Text(
+                            '현재 위치 확인',  // 버튼 텍스트 변경
+                            style: TextStyle(fontSize: 15, color: Colors.white),
+                          ),
                         ),
                       ],
                     ),
