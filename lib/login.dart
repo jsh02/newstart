@@ -151,7 +151,7 @@ class loginPage extends StatelessWidget {
                   // Navigate to the SecondPage when the button is pressed
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => json_data_file()),
+                    MaterialPageRoute(builder: (context) => JsonDataFile()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
