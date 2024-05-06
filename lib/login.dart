@@ -1,6 +1,9 @@
+
+
 import 'package:flutter/material.dart';
 
 import '/map/google_map.dart';
+import 'json_data/json.dart';
 import 'slideview_register//mainslide.dart';
 
 
@@ -144,7 +147,13 @@ class loginPage extends StatelessWidget {
               ),
               SizedBox(height: 10),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  // Navigate to the SecondPage when the button is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => json_data_file()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   minimumSize: Size(315, 48),
@@ -155,7 +164,7 @@ class loginPage extends StatelessWidget {
                   textStyle: TextStyle(fontSize: 20),
                 ),
                 child: Text(
-                  'Apple로 시작하기',
+                  '용인시 체육시설 공공데이터 api 확인해보기',
                   style: TextStyle(fontSize: 15, color: Colors.white),
                 ),
               ),
