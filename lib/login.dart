@@ -7,7 +7,7 @@ import 'json_data/json.dart';
 import 'slideview_register//mainslide.dart';
 
 
-class loginPage extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +21,7 @@ class loginPage extends StatelessWidget {
                 '스포팅과 함께\n건강한 나를 만들어보세요!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontFamily: 'Roboto',
+
                   fontSize: 26,
                   fontWeight: FontWeight.w800,
                   color: Colors.black,
@@ -64,7 +64,6 @@ class loginPage extends StatelessWidget {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-
                         content: Text(
                           '가입된 계정이 없습니다. \n 지금 회원가입하고 스포팅을 즐겨보세요',
                           textAlign: TextAlign.center,
@@ -172,7 +171,6 @@ class loginPage extends StatelessWidget {
               Text(
                 '고객문의',
                 style: TextStyle(
-                  fontFamily: 'Roboto',
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
                   color: Colors.black,

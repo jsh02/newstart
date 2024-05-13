@@ -5,8 +5,6 @@ import '33page.dart';
 import '34page.dart';
 import '35page.dart';
 
-
-
 class mainslide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

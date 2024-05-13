@@ -30,11 +30,11 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 1), () {
       // 3초 후 loginPage로 이동
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => loginPage()),
+        MaterialPageRoute(builder: (context) => LoginPage()),
       );
     });
   }
